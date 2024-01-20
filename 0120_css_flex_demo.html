@@ -27,11 +27,10 @@
             <br><br>
             __#note: grid <br>------------------------<br>
             2-dimensional<br>---------------<br>
+            __
             <br><br>
             __# notes flexbox <br>-----------------------3 common uses of flexbox<br>
             1- search bars <br>2- navigation bar <br>3-image gallery <br><br>
-
-
         </p>
         <p>
             __# ex0120 <a href="div" class="div"> < div> < /div> </a> is for block level, will seperate to own line the text in it <br>
@@ -115,13 +114,6 @@
             | .. padding: 5px; <br>} <br>
             <br>
             .item { margin: 5px; } <br>
-            <br>
-
-
-
-
-
-
             <br><br>
         </p>
         <p>
@@ -194,6 +186,77 @@
             <sup>CSS|</sup> #middle { display: block; } <br>
             <br><br>
         </p>
+        <p>
+            __#ex0120 > __# ex0120 <a href="div" class="div"> < div> < /div> </a> is for block level, will seperate to own line the text in it <br>
+
+            create a grid  <br>-------------------------<br>
+            < body> <br>
+            | .. < div class="container"> <br>
+            | ...... < div class="box a">A < /div> <br>
+            | ...... < div class="box a">B < /div> <br>
+            | ...... < div class="box a">C < /div> <br>
+            | ...... < div class="box a">D < /div> <br>
+            | ...... < div class="box a">E < /div> <br>
+            | .. < /div> <br>
+            < /body> <br>
+            <br><br>
+            __# edit CSS for grid <br>----------------<br>
+            .container {<br>
+            | .. display: grid; <br>
+            <s>| .. grid-template-columns: 100px 100px 100px; </s> <br>
+            | .. grid-template-columns: repeat(3, 100px); <br>
+            <s>| .. grid-template-rows: 2fr 1fr; </s> <br>
+            <s>| .. grid-auto-rows: 100px; ------> auto-rows function </s> <br>
+            | .. grid-auto-rows: minmax(150px, auto); ------> minmax function <br>
+            | .. grid-gap: 10px; <br>
+            | .. background-color: lightblue; <br>
+            }  <br>
+            <br><br>
+        </p>
+        <h2>__notes: fr ..aka. fraction divides the grid into new rows </h2>
+        <p>
+            ___# cheat sheet  grids & flexbox common CSS terms <br>----------------------------<br>
+            ___# alignment syntax <br>
+            <a href="colo" class="colo">justify-items:</a> <br>
+            start | center | end | stretch <br>
+            <br>
+            <a href="colo" class="colo">align-items:</a> <br>
+            start | center | end | stretch <br>
+            <br>
+            <a href="colo" class="colo">place-items:</a> <br>
+            start | stretch /**/ <br>
+            <br>
+            __# justification syntax demo <br>---------------------------<br>
+            <br>
+            <a href="colo" class="colo">justify-content:</a> <br>
+            start | stretch |center | end | space-between | space-evenly | space-around <br>
+            <br>
+            <a href="colo" class="colo">align-content:</a> <br>
+            start | stretch |center | end | space-between | space-evenly | space-around <br>
+            <br>
+            <a href="colo" class="colo">place-content:</a> <br>
+            start | center <br>
+        </p>
+        <p>
+            __# CSS terms for flexbox <br>-----------------------<br>
+            <a href="colo" class="colo">flex-direction:</a> <br>
+            row | row-reverse | column | column-reverse  <br>
+            row : organized from left to right
+            <br>
+            row-reverse: organized from right to left <br>
+            column: organized from top to bottom <br>
+            column-reverse: organized from bottom to top. <br>
+            <br>
+
+            <a href="colo" class="colo">flex-wrap:</a> <br>
+            wrap | nowrap <br>
+            The standard layout is to plot the elements from left to right in a straight line.<br>The wrap feature allows you customize this to match the size of the window displaying the page. <br><br>
+            wrap: Automatically wrap the items with as the window space gets smaller.  <br><br>
+            Nowrap: Default setting, items remain rigid and don’t respond  to adjustments made to the window size. <br>
+
+            <br><br>
+        </p>
+
 
 
 
