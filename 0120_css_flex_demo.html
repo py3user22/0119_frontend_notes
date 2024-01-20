@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>     p {border: 2px green solid; padding: 5px;} h3 {color: orange;} </style>
+    <style>     p {border: 2px green solid; padding: 5px;} h3 {color: orange;} .div {color: red; font-size: 20px;} </style>
     <title>0120 css web layout</title>
 </head>
 <body>
@@ -27,7 +27,102 @@
             <br><br>
             __#note: grid <br>------------------------<br>
             2-dimensional<br>---------------<br>
+            <br><br>
+            __# notes flexbox <br>-----------------------3 common uses of flexbox<br>
+            1- search bars <br>2- navigation bar <br>3-image gallery <br><br>
 
+
+        </p>
+        <p>
+            __# ex0120 <a href="div" class="div"> < div> < /div> </a> is for block level, will seperate to own line the text in it <br>
+            __# search bar code <br>
+            <br>
+            < body> <br>
+            | .. < div class"container"> <br>
+            | ...... < img class="icon" src="search.svg" alt="Sample image"> <br>
+            | ...... < input class="searchBox" type="search" name="search" placeholder="Enter text here.." > <br>
+            | ...... < input type="submit" value="Search" class="searchButton" > <br>
+            | .. < /div> <br>
+            < /body> <br>
+            <br><br>
+            <sup>CSS</sup><br>
+            .container {<br>
+            | .. display: inline-flex; <br>
+            | .. flex: 1 1 300px; <br>
+            | .. border-radius: 10px; <br>
+            | .. border: 1px solid blue; <br>
+            | .. overflow: hidden; <br>} <br>
+
+            <br><br>
+            __# notes: <br>
+            inline-flex<br>--------- makes the flex container behave like inline element <br>
+            <br>
+            overflow<br>-------- clips the overflow content, ex is text into search query<br>
+        </p>
+        <p>
+            __# ex.0120 navigation menu <br>------------------------<br>
+            < body> <br>
+            | .. < ul class="container"> <br>
+            | ...... < li> < a href="#">Home < /a>< /li> <br>
+            | ...... < li> < a href="#">Culinary Blog < /a>< /li> <br>
+            | ...... < li> < a href="#">Menu < /a>< /li> <br>
+            | ...... < li> < a href="#">Contact Us < /a>< /li> <br>
+            | .. < /ul> <br>
+            < /body> <br>
+            <br><br>
+            ____# <sup>CSS</sup> edits-----------------------<br>
+            * { margin: 0; padding: 0; } <br>
+            <br>
+            .container { <br>
+            | .. background-color: black; <br>
+            | .. display: flex; <br>
+            | .. flex-flow: row wrap; <br>
+            | .. justify-content: stretch; <br>} <br>
+            <br>
+            .container li { <br>
+            | .. list-style-type: none; <br>}<br>
+            <br>
+            .container a { <br>
+            | .. display: inline-block; <br>
+            | .. padding: 25px; <br>
+            | .. margin: 0 25px; <br>
+            | .. text-align: center; <br>
+            | .. color: tan; <br>} <br>
+            <br>
+        </p>
+        <p>
+            __# image gallery <br>--------------------------------<br>
+            < body> <br>
+            | .. < div class="container"> <br>
+            | ...... < img class="item" src="bruschetta.jpg" alt="Sample image" style="width: 240px; height: 180px;"> <br>
+            | ...... < img class="item" src="greek_salad.jpg" alt="Sample image" style="width: 240px; height: 180px;"> <br>
+            | ...... < img class="item" src="pasta.jpg" alt="Sample image" style="width: 240px; height: 180px;"> <br>
+            | ...... < img class="item" src="Grilled fish.jpg" alt="Sample image" style="width: 240px; height: 180px;"> <br>
+            | ...... < img class="item" src="lemon dessert.jpg" alt="Sample image" style="width: 240px; height: 180px;"> <br>
+            | ...... < img class="item" src="salad.jpg" alt="Sample image" style="width: 240px; height: 180px;"> <br>
+            | .. < /div> <br>
+            < /body> <br>
+            <br><br>
+            __# CSS edit for image gallery <br>---------------------------<br>
+            * { margin: 0; padding: 0; box-sizing: border-box; } <br>
+            <br>
+            img { border: 0; } <br>
+            <br>
+            .container {<br>
+            | .. display: flex; <br>
+            | .. flex-wrap: wrap; <br>
+            | .. justify-content: space-between <br>
+            | .. padding: 5px; <br>} <br>
+            <br>
+            .item { margin: 5px; } <br>
+            <br>
+
+
+
+
+
+
+            <br><br>
         </p>
         <p>
             __# attibute selectors <br>---------------------to choose all elements that have a defined class<br>
@@ -79,7 +174,7 @@
             inline elements <br>| .. will stay on same line and go horizontal <br><br>
             __#notes <br>-------------------<br>
             < span> < /span> is for inline text input, to keep on the same line horizontally <br><br>
-            < div> < /div> is for block level, will seperate to own line the text in it <br><br>
+            <a href="div" class="div"> < div> < /div> </a> is for block level, will seperate to own line the text in it <br><br>
             < body> <br>
             | .. < div> <br>
             | ...... < span> < /span> <br>
@@ -89,6 +184,7 @@
             < /body> <br>
             <br><br>
         </p>
+
         <p>
             __# CSS to change the < div id="middle">  to inline <br>--------------------<br>
             <sup>CSS|</sup> #middle { display: inline; } <br>
