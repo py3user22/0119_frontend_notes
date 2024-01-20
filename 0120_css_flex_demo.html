@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>     p {border: 2px green solid; padding: 5px;} h3 {color: orange;} </style>
+    <title>0120 css web layout</title>
+</head>
+<body>
+    <a href="#botp" id="topg">link to page bottom</a>
+    <header>
+        <h2>0120 css web layout - flexbox and grids</h2>
+    </header>
+    <main>
+        <p>
+            __#0120 css edit <br>--------------------<br>
+            <sup>CSS</sup> #sample { display: block; } <br>
+            <sup>CSS</sup> #sample { display: flex; } <br>
+            <sup>CSS</sup> #sample { display: grid; } <br>
+            <br><br>
+            __#note: flexbox ..aka. flebible box model <br>
+            adds responsiveness to CSS w/ float elements & positioning <br>
+            1-dimensional<br>-------------<br>
+            the flex box container will arrange items in either column/row. Can be edited to shrink/grow <br>
+            <br><br>
+            __#note: grid <br>------------------------<br>
+            2-dimensional<br>---------------<br>
+
+        </p>
+        <p>
+            __# attibute selectors <br>---------------------to choose all elements that have a defined class<br>
+            <h3><b><i>a[class] { color: darkgreen; } </i></b> </h3><br>
+
+            __# to target certain href that have a common value <br>------------------------<br>
+            <h3><b><i>a[href*="meta"] { color: darkgreen; } </i></b> </h3><br>
+
+            __# to target a specific url  <br>---------------------<br>
+            <h3><b><i>a[href="https://github.com/py3user22/0118_mysql_notes.git"] { color: darkgreen; } </i></b> </h3><br>
+        </p>
+        <a href="#botp" id="topg">link to page bottom</a>
+        <p>
+            __# nth-of-type & nth-child selectors demo <br>------------------------<br>
+            __#ex0120 unorder list and some list items<br>
+            the < ul> element is parent tag, the < li> element are the children <br>
+            <br>
+            < ul> <br>
+            | .. < li> < /li> <br>
+            | .. < li> < /li> <br>
+            | .. < li> < /li> <br>
+            < /ul> <br>
+
+            <br><br>
+            __# ex1 nth-of-type selectors <br>--------------------------<br>
+            <sup>CSS|</sup> li:nth-of-type(2) { color: aqua; } <br>
+            <br><br>
+
+            __# ex2 nth-child selectors <br>--------------------------<br>
+            <sup>CSS|</sup> li:nth-chile(2) { color: aqua; } <br>
+            <br><br>
+        </p>
+        <p>
+            __# group selectors <br>-------------------------<br>
+            h1, p { <br>
+            | .. color: blue; <br>
+            | .. text-align: center; } <br>
+            <br><br>
+            __# font size chart & notes <br>---------------------common sizes demo<br>
+            in | inches | 1in = 2.54cm = 96px <br>
+            pc | picas | 1pc = .2 of 1" <br>
+            pt | point | 1pt = .014 of 1" <br>
+            px | pixel | 1px = .01 of 1" <br>
+            <br><br>
+        </p>
+        <p>
+            __#0120 block and inline elements <br>---------------------------<br>
+            block level elements<br>| .. stack on top and on new lines <br><br>
+            inline elements <br>| .. will stay on same line and go horizontal <br><br>
+            __#notes <br>-------------------<br>
+            < span> < /span> is for inline text input, to keep on the same line horizontally <br><br>
+            < div> < /div> is for block level, will seperate to own line the text in it <br><br>
+            < body> <br>
+            | .. < div> <br>
+            | ...... < span> < /span> <br>
+            | ...... < span> < /span> <br>
+            | ...... < span> < /span> <br>
+            | .. < /div> <br>
+            < /body> <br>
+            <br><br>
+        </p>
+        <p>
+            __# CSS to change the < div id="middle">  to inline <br>--------------------<br>
+            <sup>CSS|</sup> #middle { display: inline; } <br>
+            <br><br>
+
+            __# CSS to change the < div id="middle">  to block <br>--------------------<br>
+            <sup>CSS|</sup> #middle { display: block; } <br>
+            <br><br>
+        </p>
+
+
+
+
+        <a href="#topg" id="botp">link to page top</a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        p {padding: 5px; border: 2px blue dashed;} #topg {color: green;}
+    </style>
+    <title>0119 mysql db relationships</title>
+</head>
+<body>
+    <h2>0119 mysql db relationships</h2>
+    <a href="#botp" id="topg">Link to page bottom</a>
+
+    <p>
+        __# vocab meanings notes <br>----------------------<br>
+        relation aka table >> represents file that stores data <br>
+        rows >> represents a group of related data values <br>
+        | .. row  aka  record aka  tuple <br>
+        <br>
+        columns <br>------------<br>>> define or describe a row  <br>
+        | .. column aka fields aka attributes <br>
+        <br><br>
+        degree <br>------------- <br>
+        | is the number of columns w/in a relation <br>
+        <br><br>
+        cardinality <br>--------------<br>
+        | is the number of records w/in a table in a db <br>
+        <br><br>
+        entity <br>---------------<br>
+        | based on two key concepts: entities & relationships <br>
+        | Entities defined as tables, and relationships defined as the associations between entities <br>
+        | a object  that has properties which define its characteristics <br>
+        | example is table columns/rows are entity attribute <br>
+        <br><br>
+
+    </p>
+    <a href="#botp" id="topg">Link to page bottom</a>
+    <hr>
+    <p>
+        __# 0119 relational model <br>------------------one to many <br>
+        (1:N) relationship ..aka.. one-to-many relationship <br>
+        a table can relate to 0+ records in another table <br>
+        <br><br>
+        __# many-to-many <br>-----------------<br>
+        (N:N) relationship <br>
+        many records in table1 can relate to many records in table1 <br>
+        <br><br>
+    </p>
+    <p>
+        __#0119 primary keys <br>----------------------<br>
+        candiate key -> a attibute unique to each row of a table <br>
+        <br>
+        composite primary key -> a combination of multiple attributes <br>
+        <br><br>
+    </p>
+    <p>
+        __# foreign key <br>-------------------------<br>
+        foreign key -> columns used to connect  2 tables together for cross-referencing <br>
+        <br>
+        <br><br>
+    </p>
+    <p>
+        __#0119 keys in depth demo <br>------------------------<br>
+        create database automobile; <br>
+        <br>
+        __# change to the database <br>----------------<br>
+        use automobile; <br>
+        <br>
+        __# create table for db <br>--------------<br>
+        create table vehicle( <br>
+        | .. vehicleID varchar(10), <br>
+        | .. ownerID varchar(10), <br>
+        | .. plateNumber varchar(10), <br>
+        | .. phoneNumber INT, <br>
+        | .. primary key (vehicleID)); <br>
+        <br><br>
+        __#  to show tables made <br>
+        show tables; <br>
+        <br>
+        __# to show structure of vehicle table <br>-----------------------<br>
+        >> <a href="colo">
+            show columns from vehicle; </a> <br>
+        <br>
+        __ex2 create table <br>-------------------<br>
+        create table owner( <br>
+        | .. ownerID VARCHAR(10) <br>
+        | .. ownerName VARCHAR(50) <br>
+        | .. ownerAddress VARCHAR(255) <br>
+        | .. PRIMARY KEY (ownerID)); <br>
+        <br>
+        __# to show structure of owner table <br>-----------------------<br>
+        >> <a href="colo">
+            show columns from owner; </a> <br>
+        <br><br>
+        __# use alter cmd to make foreign key add to vehicles table <br>------------------------<br>
+        <a href="alte">ALTER TABLE</a> vehicle <a href="add">ADD FOREIGN KEY</a> (ownerID)
+        <a href="refe">REFERENCES</a> owner(ownerID) <br>
+        <br><br>
+    </p>
+    <p>
+        __# 0119 notes defining keys <br>-------------------<br>
+        CREATE TABLE Orders (<br>
+        | .. OrderID int NOT NULL, <br>
+        | .. CustomerID int, <br>
+        | .. PRIMARY KEY (OrderID), <br>
+        | .. FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)); <br>
+        <br><br>
+        __# define email address column as primary key ex1 <br>-------------------<br>
+        CREATE TABLE Staff( <br>
+        | .. Email VARCHAR(200) NOT NULL, <br>
+        | .. Name varchar(255) NOT NULL, <br>
+        | .. CONSTRAINT PK_Email PRIMARY KEY (Email)); <br>
+        <br><br>
+    </p>
+    <p>
+        __#0119 data normalization demo <br>------------------unnormalized table demo <br>
+        __create new table <br>
+        <br>
+        CREATE TABLE Surgery( <br>
+        | .. DoctorID VARCHAR(10), <br>
+        | .. DoctorName VARCHAR(50), <br>
+        | .. Region VARCHAR(20), <br>
+        | .. <strike>PatientID VARCHAR(10),</strike> <br>
+        | .. <strike>PatientName VARCHAR(50),</strike> <br>
+        | .. SurgeryNumber INT, <br>
+        | .. Council VARCHAR(20), <br>
+        | .. Postcode VARCHAR(10), <br>
+        | .. <strike>SlotID VARCHAR(5),</strike> <br>
+        | .. <strike>TotalCost Decimal));</strike> <br>
+        <br><br>
+        __# 1st normal form (1NF) ---> make a new table for easier data edits<br>------------------<br>
+        enforce data atomicity rule, eliminates repeat data groups. <br>
+        can have only 1 instance value of the column attribute in any table cell. <br>
+        __# tables: Patient, Surgery, Doctor <br>
+        <br><br>
+        CREATE TABLE Patient( <br>
+        | .. PatientID VARCHAR(10) NOT NULL, <br>
+        | .. PatientName VARCHAR(50), <br>
+        | .. SlotID VARCHAR(10) NOT NULL, <br>
+        | .. TotalCost Decimal, <br>
+        | .. CONSTRAINT PK_Patient <br>
+        | .. PRIMARY KEY (PatientID, SlotID)); <br>
+        <br>
+        <strike> </strike>
+         <br>
+        __# create doctor table <br>----------------------<br>
+        CREATE TABLE Doctor( <br>
+        | .. DoctorID VARCHAR(10), <br>
+        | .. DoctorName VARCHAR(50), <br>
+        | .. PRIMARY KEY (DoctorID)); <br>
+        <br><br>
+        __# create surgery table <br>-----------------<br>
+        CREATE TABLE Surgery( <br>
+        | .. SurgeryNumber INT NOT NULL, <br>
+        | .. Region VARCHAR(20), <br>
+        | .. Council VARCHAR(20), <br>
+        | .. Postcode VARCHAR(10), <br>
+        | .. PRIMARY KEY (SurgeryNumber)); <br>
+        <br><br>
+    </p>
+    <p>
+        __# 2nd normal form (2NF) <br>---------------------tables: patients, appointments <br>
+        used to avoid partial dependency relationships between data. <br>
+        functional dependancy -> the relationship between 2 attributes in a table <br>
+        refers to tables w/ a composite primary key ..aka. key w/ 2+ columns, where non-key attribute value depends only on 1 piece of composite key <br>
+        <br><br>
+        CREATE TABLE Patient( <br>
+        | .. PatientID VARCHAR(10) NOT NULL, <br>
+        | .. PatientName, VARCHAR(50), <br>
+        | .. PRIMARY KEY (PatientID)); <br>
+        <br><br>
+        CREATE TABLE Appointments( <br>
+        | .. AppointmentID INT NOT NULL, <br>
+        | .. SlotID, VARCHAR(10), <br>
+        | .. TotalCost Decimal, <br>
+        | .. PRIMARY KEY (AppointmentID)); <br>
+        <br><br>
+    </p>
+    <p>
+        __# 3rd normal form (3NF) <br>-------------------------tables: council, surgery <br>
+        CREATE TABLE Location( <br>
+        | .. SurgeryNumber INT NOT NULL, <br>
+        | .. Postcode VARCHAR(10), <br>
+        | .. PRIMARY KEY (SurgeryNumber)); <br>
+        <br><br>
+        CREATE TABLE Council( <br>
+        | .. Council VARCHAR(20) NOT NULL, <br>
+        | .. Region VARCHAR(20), <br>
+        | .. PRIMARY KEY (Council)); <br>
+        <br><br>
+        __# notes: <br>
+        (region table) --> pk = Council  <----------> fk = Council (Sugery table) <br>
+        (doctor table) --> pk = DoctorID  <----------> fk = DoctorID (Appointments table) <br>
+        (patients table) --> pk = PatientID  <----------> fk = PatientID (Appointments table) <br>
+        <br><br>
+    </p>
+    <p>
+        __ #0119 examples from lab <br>------------------------<br>
+        CREATE TABLE Employee( <br>
+        | .. LastName VARCHAR(20), <br>
+        | .. FirstName VARCHAR(20), <br>
+        | .. Title VARCHAR(30), <br>
+        | .. ReportsTo INT, <br>
+        | .. BirthDate DATE, <br>
+        | .. HireDate DATE, <br>
+        | .. Address VARCHAR(70), <br>
+        <br><br>
+        ___# ;---> table: Employee (pk = EmployeeId) <br>
+        ___# '---> table: Customers (fk = SupportRepId) <br>
+        <br>
+        CREATE TABLE Customers( <br>
+        | .. LastName VARCHAR(20), <br>
+        | .. FirstName VARCHAR(20), <br>
+        | .. Company VARCHAR(30), <br>
+        | .. Phone VARCHAR(20), <br>
+        | .. Email VARCHAR(100), <br>
+        | .. City VARCHAR(20), <br>
+        | .. Address VARCHAR(70), <br>
+        <br><br>
+        ___# ;---> table: Customers (pk = CustomerId) <br>
+        ___# '---> table: Invoices (fk = CustomerId) <br>
+        <br>
+        CREATE TABLE Invoices( <br>
+        | .. CustomerID INT, <br>
+        | .. InvoiceDate DATE, <br>
+        | .. BillingAddress VARCHAR(100), <br>
+        | .. BillingCity VARCHAR(50), <br>
+        <br><br>
+        ___# ;---> table: Invoices (pk = InvoiceId) <br>
+        ___# '---> table: Tracks (pk = TrackId) <br>
+        <br>
+        ___# ;---> table: Tracks (fk = AlbumId) <br>
+        ___# '---> table: Albums (pk = AlbumId) <br>
+        <br>
+        ___# ;---> table: Albums (fk = ArtistId) <br>
+        ___# '---> table: Artist (pk = ArtistId) <br>
+        <br>
+        ___# ;---> table: Location (pk = locationId) <br>
+        ___# '---> table: Artist (fk = locationId) <br>
+        <br>
+    </p>
+
+    <br><br>
+    <a href="#topg" id="botp">Link to page top</a>
+</body>
+</html>
